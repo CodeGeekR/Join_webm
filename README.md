@@ -1,4 +1,4 @@
-# Join .webm
+# Script Python => Join .webm
 
 Script desarrolado en Pyhon parar unir archivos de video y audio con la extension .webm utilizando la biblioteca moviepy.
 
@@ -32,11 +32,11 @@ Este proyecto requiere Python 3 y las siguientes bibliotecas:
 
 # Uso
 
-Para utilizar este proyecto, ejecute el archivo main.py con los siguientes argumentos:
+- Para utilizar este proyecto, ejecute el archivo main.py con los siguientes argumentos:
 
-    ```bash copyable
-    python main.py '/ruta/video.webm' '/ruta/audio.webm'
-    ```
+  ```bash copyable
+  python main.py </ruta/video.webm> </ruta/audio.webm>
+  ```
 
 Este comando combinará el archivo de video video.webm y el archivo de audio audio.webm en un archivo de salida video.mp4 que se copiara en la carpeta /Downloads
 
