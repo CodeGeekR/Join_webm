@@ -24,7 +24,25 @@ Este proyecto requiere Python 3 y las siguientes bibliotecas:
    cd <ruta_carpeta>
    ```
 
-3. Para instalar las bibliotecas necesarias, puede utilizar los siguientes comandos:
+3. Ejecuta el siguiente comando para crear un nuevo entorno virtual:
+
+python -m venv env
+
+4. Activa el entorno virtual ejecutando el siguiente comando:
+
+   - En Windows:
+
+     ```bash copyable
+     env\Scripts\activate.bat
+     ```
+
+   - En macOS o Linux:
+
+     ```bash copyable
+     source env/bin/activate
+     ```
+
+5. Para instalar las bibliotecas necesarias, puede utilizar los siguientes comandos:
 
    ```bash copyable
    pip install -r requirements.txt
@@ -38,7 +56,7 @@ Este proyecto requiere Python 3 y las siguientes bibliotecas:
   python main.py </ruta/video.webm> </ruta/audio.webm>
   ```
 
-Este comando combinará el archivo de video video.webm y el archivo de audio audio.webm en un archivo de salida video.mp4 que se copiara en la carpeta /Downloads
+Este comando combinará el archivo de video <video.webm> y el archivo de audio <audio.webm> en un archivo de salida video.mp4 que se copiara en la misma carpeta de origen del video.
 
 ## Contribuye
 
