@@ -1,9 +1,7 @@
 import argparse
-from moviepy.editor import VideoFileClip, AudioFileClip, VideoClip
+from moviepy.editor import VideoFileClip, AudioFileClip
 import os
-import moviepy.video.fx.all as vfx
-import moviepy.video.tools.cuts as cuts
-import moviepy.video.compositing.CompositeVideoClip as CompositeVideoClip
+import imageio.plugins.ffmpeg as ffmpeg
 
 # Crear un objeto ArgumentParser para manejar los argumentos de línea de comandos
 parser = argparse.ArgumentParser(description="Unir archivos de video y audio en un archivo .mp4")
@@ -24,7 +22,7 @@ if not os.path.isfile(args.audio):
 if not os.path.isfile(args.video):
     print(f"El archivo de video {args.video} no existe.")
     exit()
-
+    
 # Cargar el archivo de video y el archivo de audio
 video = VideoFileClip(args.video)
 audio = AudioFileClip(args.audio)
@@ -32,11 +30,10 @@ audio = AudioFileClip(args.audio)
 # Unir el archivo de video y el archivo de audio
 video_with_audio = video.set_audio(audio)
 
-# Configurar el codificador de video con el backend de pyopencl
-VideoClip._resize_with = "pyopencl"
+# Configurar el codificador de video con el backend de metal2
+ffmpeg_version_info = ffmpeg.get_ffmpeg_version_info()
+ffmpeg.add_command("-vcodec", "h264_videotoolbox", "-b:v", "5000k", "-profile:v", "high", "-pix_fmt", "yuv420p", "-movflags", "faststart")
 
-# Construir la ruta de salida del archivo de video
+# Codificar el video con Metal2
 output_path = os.path.splitext(args.video)[0] + ".mp4"
-
-# output_path = os.path.expanduser("~/Downloads/video.mp4")
-video_with_audio.write_videofile(output_path, codec="libx264", audio_codec="aac", threads=4)
+video_with_audio.write_videofile(output_path, codec="libx264", audio_codec="aac")
