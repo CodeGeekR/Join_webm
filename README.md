@@ -26,7 +26,9 @@ Este proyecto requiere Python 3 y las siguientes bibliotecas:
 
 3. Ejecuta el siguiente comando para crear un nuevo entorno virtual:
 
-python -m venv env
+   ```bash copyable
+   python -m venv env
+   ```
 
 4. Activa el entorno virtual ejecutando el siguiente comando:
 
